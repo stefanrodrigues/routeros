@@ -4,7 +4,7 @@ Package routeros is a pure Go client library for accessing Mikrotik devices usin
 package routeros
 
 import (
-	"crypto/md5"
+	//"crypto/md5"
 	"crypto/tls"
 	"encoding/hex"
 	"errors"
