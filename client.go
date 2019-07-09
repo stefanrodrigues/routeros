@@ -97,15 +97,17 @@ func (c *Client) Login(username, password string) error {
 	if err != nil {
 		return fmt.Errorf("RouterOS: /login: invalid ret (challenge) hex string received: %s", err)
 	}
-
-	r, err = c.Run("/login", "=name="+username, "=response="+c.challengeResponse(b, password))
+	// Bacalhau!
+        fmt.Errorf("%s",b)
+        //r, err = c.Run("/login", "=name="+username, "=response="+c.challengeResponse(b, password))
+        r, err = c.Run("/login", "=name="+username, "=password="+password)
 	if err != nil {
 		return err
 	}
-
+	
 	return nil
 }
-
+/*
 func (c *Client) challengeResponse(cha []byte, password string) string {
 	h := md5.New()
 	h.Write([]byte{0})
@@ -113,3 +115,4 @@ func (c *Client) challengeResponse(cha []byte, password string) string {
 	h.Write(cha)
 	return fmt.Sprintf("00%x", h.Sum(nil))
 }
+*/
